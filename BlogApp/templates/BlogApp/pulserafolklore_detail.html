@@ -1,0 +1,28 @@
+
+{% extends "BlogApp/welcome.html" %}
+{% load static %}
+
+{% block texto1 %}{% endblock%}
+{% block text02 %}{% endblock%}
+
+
+{% block FORM %}
+
+<p>Autor: {{pulserafolklore.autor}}</p>
+<p>País: {{pulserafolklore.pais}}</p>
+<p>Edad: {{pulserafolklore.edad}}</p>
+<p>Color: {{pulserafolklore.color_predominante}}</p>
+
+<style>
+    .regresar_link{
+        color: white;
+        text-decoration: none;
+    }
+</style>
+<a class="regresar_link" href="{% url 'ver_folklore' %}"> <- Regresar</a>
+{% endblock %}
+
+{% block submit %}{% endblock %}
+{% block infoSection %}
+{% endblock %}
+

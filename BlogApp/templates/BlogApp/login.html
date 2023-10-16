@@ -1,0 +1,30 @@
+{% extends "BlogApp/homepage.html" %}
+{% load static %}
+
+
+{% block text02 %}<h2 class="masthead-subheading mb-0">Inicia sesión</h2>{% endblock%}
+
+{% block submit %}
+    <a class="btn btn-primary btn-xl rounded-pill mt-5" href="{% url 'registro' %}">Si no tenes cuenta, registrate</a>
+{% endblock %}
+
+{% block FORM %}
+
+<br>
+<br>
+
+<form action="" method="POST"> {% csrf_token %}
+
+    <table>
+        {{ formulario.as_p }}
+    </table>
+
+    <input class="btn btn-primary btn-xl rounded-pill mt-5" type="submit" value="Entrar">
+
+</form>
+{% endblock %}
+
+
+
+{% block infoSection %}
+{% endblock %}

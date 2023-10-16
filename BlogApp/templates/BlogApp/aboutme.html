@@ -1,0 +1,36 @@
+{% extends "BlogApp/HOMEPAGE.html" %}
+{% load static %}
+
+{% block Header %}{% endblock %}
+{% block text02 %}<h2 class="masthead-subheading mb-0">Sobre mí
+</h2>{% endblock%}
+
+{% block submit %}
+{% endblock %}
+
+{% block FORM %}
+{% endblock %}
+
+
+
+{% block infoSection %}
+<br>
+<br>
+<section>
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="p-5"><img class="img-fluid rounded-circle"
+                        src="{% static 'BlogApp/assets/img/img (10).jpeg' %}" alt="..." /></div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h2 class="display-4">Acerca de mí</h2>
+                    <p>Hola! Me llamo Naza, tengo 22 años.</p>
+                    <p>Este año me adentré en el mundo del desarrollo web, arrancando por html5 y css3. Más tarde aprendí un poco más sobre javascript, para más tarde decidir hacer uno de python.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

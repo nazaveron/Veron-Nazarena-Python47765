@@ -1,0 +1,32 @@
+{% extends "BlogApp/welcome.html" %}
+{% load static %}
+
+{% block texto1 %}{% endblock%}
+{% block text02 %}{% endblock%}
+
+
+{% block FORM %}
+
+<p>Autor: {{pulserreputation.autor}}</p>
+<p>País: {{pulserreputation.pais}}</p>
+<p>Edad: {{pulserreputation.edad}}</p>
+<p>Color: {{pulserreputation.color_predominante}}</p>
+
+<style>
+    .enlace_vistas{
+        text-decoration: none;
+        color: black;
+    }
+    
+    .enlace_vistas:hover{
+        color: white;
+    }
+    </style>
+
+<a class="enlace_vistas" href="{% url 'ver_reputation' %}"> <- Regresar</a>
+{% endblock %}
+
+{% block submit %}{% endblock %}
+{% block infoSection %}
+{% endblock %}
+

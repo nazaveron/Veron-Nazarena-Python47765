@@ -1,0 +1,38 @@
+
+{% extends "BlogApp/welcome.html" %}
+{% load static %}
+
+{% block texto1 %}<h1 class="masthead-heading mb-0">pulseras Folklore</h1>{% endblock%}
+{% block text02 %}{% endblock%}
+
+
+{% block FORM %}
+
+{% for pulsera_folklore in object_list %}
+
+<p>Autor: {{pulsera_folklore.autor}}</p>
+<p>País: {{pulsera_folklore.pais}}</p>
+<p>Edad: {{pulsera_folklore.edad}}</p>
+<p>Color: {{pulsera_folklore.color_predominante}}</p>
+
+<button><a href="{% url 'detalle_folklore' pulsera_folklore.id %}">Ver pulsera</a></button>
+
+<button><a href="{% url 'crear_folklore'  %}"> Compartir nueva pulsera</a></button>
+
+<button><a href="{% url 'actualizar_folklore' pulsera_folklore.id  %}"> Editar pulsera</a></button>
+
+<button><a href="{% url 'borrar_folklore' pulsera_folklore.id  %}"> Eliminar pulsera</a></button>
+
+<p>---------------------------</p>
+
+
+{% endfor %}
+
+
+{% endblock %}
+
+{% block submit %}{% endblock %}
+{% block infoSection %}
+{% endblock %}
+
+

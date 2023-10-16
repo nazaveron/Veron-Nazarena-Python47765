@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado búsqueda</title>
+</head>
+<body>
+    
+    <h1>Resultado de Búsqueda</h1>
+    <ul>
+        {% for Era in pulseras_encontradas %}
+        <li>
+            <img src="{{pulsera_1989.imagenPulsera }}" alt="Resultado de la búsqueda">
+        </li>
+        {% empty %}
+            <li style="list-style: none;">No se encontraron pulseras.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

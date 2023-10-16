@@ -1,0 +1,20 @@
+{% extends "BlogApp/HOMEPAGE.html" %}
+{% load static %}
+
+{% block texto1 %}<h1 class="masthead-heading mb-0">Búsqueda</h1>{% endblock%}
+{% block text02 %}{% endblock%}
+
+
+{% block FORM %}
+<h1>ingresa un color</h1>
+<form method="get" action="{% url 'resultados' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Buscar</button>
+</form>
+{% endblock %}
+
+{% block submit %}{% endblock %}
+{% block infoSection %}
+{% endblock %}
+

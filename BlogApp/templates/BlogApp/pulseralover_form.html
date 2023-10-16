@@ -1,0 +1,40 @@
+{% extends "BlogApp/welcome.html" %}
+{% load static %}
+
+{% block texto1 %}<h1 class="masthead-heading mb-0">Compartí tu pulsera de Lover</h1>{% endblock%}
+{% block text02 %}{% endblock%}
+
+
+{% block FORM %}
+<br>
+<form action="" method="POST" autocomplete="off"> {% csrf_token %}
+
+    
+    {{ form.as_p }}
+
+<br>
+<input type="submit" value="Guardar">
+
+
+
+</form>
+
+<br>
+
+<style>
+.enlace_vistas{
+    text-decoration: none;
+    color: black;
+}
+
+.enlace_vistas:hover{
+    color: white;
+}
+</style>
+
+<a class="enlace_vistas" href="{% url 'ver_lover' %}">Ver lista</a>
+{% endblock %}
+
+{% block submit %}{% endblock %}
+{% block infoSection %}
+{% endblock %}

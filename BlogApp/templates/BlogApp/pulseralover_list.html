@@ -1,0 +1,38 @@
+
+{% extends "BlogApp/welcome.html" %}
+{% load static %}
+
+{% block texto1 %}<h1 class="masthead-heading mb-0">pulseras Lover</h1>{% endblock%}
+{% block text02 %}{% endblock%}
+
+
+{% block FORM %}
+
+{% for pulsera_lover in object_list %}
+
+<p>Autor: {{pulsera_lover.autor}}</p>
+<p>País: {{pulsera_lover.pais}}</p>
+<p>Edad: {{pulsera_lover.edad}}</p>
+<p>Color: {{pulsera_lover.color_predominante}}</p>
+
+<button><a href="{% url 'detalle_lover' pulsera_lover.id %}">Ver pulsera</a></button>
+
+<button><a href="{% url 'crear_lover'  %}"> Compartir nueva pulsera</a></button>
+
+<button><a href="{% url 'actualizar_lover' pulsera_lover.id  %}"> Editar pulsera</a></button>
+
+<button><a href="{% url 'borrar_lover' pulsera_lover.id  %}"> Eliminar pulsera</a></button>
+
+<p>---------------------------</p>
+
+
+{% endfor %}
+
+
+{% endblock %}
+
+{% block submit %}{% endblock %}
+{% block infoSection %}
+{% endblock %}
+
+

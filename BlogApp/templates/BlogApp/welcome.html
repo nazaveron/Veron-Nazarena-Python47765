@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Friendship Bracelets</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i"
+        rel="stylesheet" />
+    <link href="{% static 'BlogApp/css/styles.css' %}" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container px-5">
+            <a class="navbar-brand" href="{% url 'homepage' %}">Blog de pulseras</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Buscar | </a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'crear_1989' %}">1989</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'crear_reputation' %}">reputation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'crear_lover' %}">lover</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'crear_folklore' %}">folklore</a></li>
+
+
+                    <li class="nav-item"><a class="nav-link" href="{% url 'editarperfil' %}">editar perfil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">salir</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Header-->
+    {% block Header %}
+    <header class="masthead text-center text-white">
+        <div class="masthead-content">
+            <div class="container px-5">
+                
+                {% block texto1 %}<h1 class="masthead-heading mb-0">Friendship Bracelets</h1>{% endblock%}
+                {% block text02 %}<h2 class="masthead-subheading mb-0">Taylor Swift | Eras Tour 2023</h2>{% endblock%}
+                
+                
+
+                {% block FORM %}
+                {% endblock %}
+                
+                {% block submit %}<a class="btn btn-primary btn-xl rounded-pill mt-5">{{mensaje}}</a>{% endblock %}
+                
+            </div>
+        </div>
+        <div class="bg-circle-1 bg-circle"></div>
+        <div class="bg-circle-2 bg-circle"></div>
+        <div class="bg-circle-3 bg-circle"></div>
+        <div class="bg-circle-4 bg-circle"></div>
+        
+    </header>
+    {% endblock %}
+    <!-- Content section 1-->
+    {% block infoSection %}
+    <section id="scroll">
+        <div class="container px-5">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5"><img class="img-fluid rounded-circle"
+                            src="{% static 'BlogApp/assets/img/img (20).jpeg' %}" alt="..." /></div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5">
+                        <h2 class="display-4">Explora diseños</h2>
+                        <p>¡No podemos parar de hacer pulseras! ¿Te quedaste sin ideas? Podes mirar los diseños que compartieron más swifties</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Content section 2-->
+    <section>
+        <div class="container px-5">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-6">
+                    <div class="p-5"><img class="img-fluid rounded-circle"
+                            src="{% static 'BlogApp/assets/img/img (10).jpeg' %}" alt="..." /></div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="p-5">
+                        <h2 class="display-4">Mostrá las pulseras que hiciste</h2>
+                        <p>¡Vos también podes compatir imágenes de tus pulseras! Subí tus imágenes y dejá que las demás swifties comenten cuanto les gustó </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Content section 3-->
+    <section>
+        <div class="container px-5">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5"><img class="img-fluid rounded-circle"
+                            src="{% static 'BlogApp/assets/img/img (9).jpeg' %}" alt="..." /></div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5">
+                        <h2 class="display-4">También podes filtrarlas por color!</h2>
+                        <p>Encontra los diseños que quieras mucho más rápido </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+    <!-- Footer-->
+
+    {% block footer %}
+    <footer class="py-5 bg-black">
+        <div class="container px-5">
+            <p class="m-0 text-center text-white small">Copyright &copy; <a href="{% url 'about_me' %}" >Nazarena Veron</a> - 2023</p>
+        </div>
+    </footer>
+    {% endblock %}
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{% static 'BlogApp/js/scripts.js' %}"></script>
+</body>
+
+</html>

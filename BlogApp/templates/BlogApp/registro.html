@@ -1,0 +1,26 @@
+{% extends "BlogApp/homepage.html" %}
+{% load static %}
+
+{% block texto1 %}<h1 class="masthead-heading mb-0">Registrate</h1>{% endblock%}
+{% block text02 %}<h2 class="masthead-subheading mb-0">y empezá a compartir tus pulseras</h2>{% endblock%}
+
+
+{% block FORM %}
+
+<br>
+<br>
+
+<form action="" method="POST"> {% csrf_token %}
+
+    <table>
+        {{ formulario.as_p }}
+    </table>
+
+    <input class="btn btn-primary btn-xl rounded-pill mt-5" type="submit" value="Guardar">
+
+</form>
+{% endblock %}
+
+{% block submit %}{% endblock %}
+{% block infoSection %}
+{% endblock %}

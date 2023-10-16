@@ -1,0 +1,37 @@
+
+{% extends "BlogApp/welcome.html" %}
+{% load static %}
+
+{% block texto1 %}<h1 class="masthead-heading mb-0">pulseras reputation</h1>{% endblock%}
+{% block text02 %}{% endblock%}
+
+
+{% block FORM %}
+
+{% for reputation in object_list %}
+
+<p>Autor: {{reputation.autor}}</p>
+<p>País: {{reputation.pais}}</p>
+<p>Edad: {{reputation.edad}}</p>
+<p>Color: {{reputation.color_predominante}}</p>
+
+<button><a href="{% url 'detalle_reputation' reputation.id %}">Ver pulsera</a></button>
+
+<button><a href="{% url 'crear_reputation'  %}"> Subir nueva pulsera</a></button>
+
+<button><a href="{% url 'actualizar_reputation' reputation.id  %}"> Editar pulsera</a></button>
+
+<button><a href="{% url 'borrar_reputation' reputation.id  %}"> Eliminar pulsera</a></button>
+
+<p>---------------------------</p>
+
+
+{% endfor %}
+
+
+{% endblock %}
+
+{% block submit %}{% endblock %}
+{% block infoSection %}
+{% endblock %}
+

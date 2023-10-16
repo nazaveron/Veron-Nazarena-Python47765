@@ -1,0 +1,41 @@
+
+{% extends "BlogApp/welcome.html" %}
+{% load static %}
+
+{% block texto1 %}¿Seguro que deseas borrar tu pulsera?{% endblock%}
+{% block text02 %}{% endblock%}
+<br>
+
+{% block FORM %}
+<form action="" method="POST" autocomplete="off"> {% csrf_token %}
+
+    
+    {{ form.as_p }}
+
+<br>
+<input type="submit" value="Guardar">
+
+
+</form>
+{% endblock %}
+
+{% block submit %}
+<br>
+
+<style>
+.enlace_vistas{
+    text-decoration: none;
+    color: black;
+}
+
+.enlace_vistas:hover{
+    color: white;
+}
+</style>
+
+<a class="enlace_vistas" href="{% url 'ver_1989' %}">Ver lista</a>
+
+{% endblock %}
+{% block infoSection %}
+{% endblock %}
+

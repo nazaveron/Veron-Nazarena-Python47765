@@ -1,0 +1,29 @@
+
+{% extends "BlogApp/welcome.html" %}
+{% load static %}
+
+{% block texto1 %}{% endblock%}
+{% block text02 %}{% endblock%}
+
+
+{% block FORM %}
+
+<p>Autor: {{pulsera1989.autor}}</p>
+<p>País: {{pulsera1989.pais}}</p>
+<p>Edad: {{pulsera1989.edad}}</p>
+<p>Color: {{pulsera1989.color_predominante}}</p>
+
+
+<style>
+    .regresar_link{
+        color: white;
+        text-decoration: none;
+    }
+</style>
+
+<a class="regresar_link" href="{% url 'ver_1989' %}"> <- Regresar</a>
+{% endblock %}
+
+{% block submit %}{% endblock %}
+{% block infoSection %}
+{% endblock %}

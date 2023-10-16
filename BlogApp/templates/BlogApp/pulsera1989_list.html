@@ -1,0 +1,38 @@
+
+{% extends "BlogApp/welcome.html" %}
+{% load static %}
+
+{% block texto1 %}<h1 class="masthead-heading mb-0">pulseras 1989</h1>{% endblock%}
+{% block text02 %}{% endblock%}
+
+
+{% block FORM %}
+
+{% for pulsera_1989 in object_list %}
+
+<p>Autor: {{pulsera_1989.autor}}</p>
+<p>País: {{pulsera_1989.pais}}</p>
+<p>Edad: {{pulsera_1989.edad}}</p>
+<p>Color: {{pulsera_1989.color_predominante}}</p>
+
+<button><a href="{% url 'detalle_1989' pulsera_1989.id %}">Ver pulsera</a></button>
+
+<button><a href="{% url 'crear_1989'  %}"> Compartir nueva pulsera</a></button>
+
+<button><a href="{% url 'actualizar_1989' pulsera_1989.id  %}"> Editar pulsera</a></button>
+
+<button><a href="{% url 'borrar_1989' pulsera_1989.id  %}"> Eliminar pulsera</a></button>
+
+<p>---------------------------</p>
+
+
+{% endfor %}
+
+
+{% endblock %}
+
+{% block submit %}{% endblock %}
+{% block infoSection %}
+{% endblock %}
+
+
