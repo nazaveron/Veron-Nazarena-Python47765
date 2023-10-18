@@ -8,10 +8,15 @@
 
 {% block FORM %}
 
-<p>Autor: {{pulserafolklore.autor}}</p>
-<p>País: {{pulserafolklore.pais}}</p>
-<p>Edad: {{pulserafolklore.edad}}</p>
-<p>Color: {{pulserafolklore.color_predominante}}</p>
+
+<div class="col-lg-6 order-lg-2">
+    <div class="p-5">
+        <img class="img-fluid rounded-circle" src="{{ pulserafolklore.imagen.url }}" alt="..." />
+        </div>
+</div>
+
+
+
 
 <style>
     .regresar_link{
@@ -19,10 +24,13 @@
         text-decoration: none;
     }
 </style>
+
+<br>
 <a class="regresar_link" href="{% url 'ver_folklore' %}"> <- Regresar</a>
 {% endblock %}
 
 {% block submit %}{% endblock %}
 {% block infoSection %}
 {% endblock %}
+
 

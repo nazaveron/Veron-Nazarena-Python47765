@@ -10,22 +10,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-
-@login_required
-def agregar_avatar(request):
-    if request.method == 'POST':
-        miFormulario = Avatarformulario(request.POST, request.FILES)
-        if miFormulario.is_valid():
-            usario = request.user
-            imagen = miFormulario.cleaned_data["imagen"]
-            avatar = Avatar(user=usuario, imagen=imagen)
-            avatar.save()
-            return render(request, "BlogApp/welcome.html")
-    else:
-        miFormulario = Avatarformulario()
-
-    return render(request, "BlogApp/agregar_avatar.html", {"miFormulario": miFormulario})
-
+from django.contrib.auth import update_session_auth_hash
 
 def aboutme(request):
     return render(request, 'BlogApp/aboutme.html')
@@ -76,26 +61,23 @@ def iniciosesion(request):
 @login_required
 def editarperfil(request):
     usuario = request.user
+
     if request.method == 'POST':
-        
-        miFormulario = UserEditForm(request.POST)
+        miFormulario = UserEditForm(request.POST, instance=usuario)
         if miFormulario.is_valid():
-            
-            informacion = miFormulario.cleaned_data
+            miFormulario.save()
 
-            usuario.email = informacion["email"]
-            usuario.password = informacion["password"]
-            usuario.first_name = informacion["first_name"]
-
-
-            usuario.save()
+            nueva_contraseña = request.POST.get('password')
+            if nueva_contraseña:
+                usuario.set_password(nueva_contraseña)
+                usuario.save()
+                update_session_auth_hash(request, usuario) 
 
             return render(request, 'BlogApp/welcome.html')
-        
     else:
-            miFormulario = UserEditForm(initial={'email': usuario.email})
+        miFormulario = UserEditForm(instance=usuario)
 
-    return render(request, 'BlogApp/editarperfil.html', {"miFormulario":miFormulario, 'usuario': usuario})
+    return render(request, 'BlogApp/editarperfil.html', {"miFormulario": miFormulario, 'usuario': usuario})
 
 #CRUD 1989
 
@@ -111,13 +93,13 @@ class CrearPulsera1989(LoginRequiredMixin, CreateView):
 
     model = pulsera1989
     success_url = "/TS/1989/list"
-    fields = ["autor", "pais", "edad", "color_predominante"]
+    fields = ["autor", "pais", "edad", "color_predominante", "imagen"]
 
 class ActualizarPulsera1989(LoginRequiredMixin, UpdateView,):
 
     model = pulsera1989
     success_url = "/TS/1989/list"
-    fields = ["autor", "pais", "edad", "color_predominante"]
+    fields = ["autor", "pais", "edad", "color_predominante", "imagen"]
 
 class BorrarPulsera1989(LoginRequiredMixin, DeleteView):
 
@@ -138,13 +120,13 @@ class CrearReputation(LoginRequiredMixin, CreateView):
 
     model = pulseraReputation
     success_url = "/TS/reputation/list"
-    fields = ["autor", "pais", "edad", "color_predominante"]
+    fields = ["autor", "pais", "edad", "color_predominante", "imagen"]
 
 class ActualizarReputation(LoginRequiredMixin, UpdateView):
 
     model = pulseraReputation
     success_url = "/TS/reputation/list"
-    fields = ["autor", "pais", "edad", "color_predominante"]
+    fields = ["autor", "pais", "edad", "color_predominante", "imagen"]
 
 class BorrarReputation(LoginRequiredMixin, DeleteView):
 
@@ -166,13 +148,13 @@ class CrearLover(LoginRequiredMixin, CreateView):
 
     model = pulseraLover
     success_url = "/TS/lover/list"
-    fields = ["autor", "pais", "edad", "color_predominante"]
+    fields = ["autor", "pais", "edad", "color_predominante", "imagen"]
 
 class ActualizarLover(LoginRequiredMixin, UpdateView):
 
     model = pulseraLover
     success_url = "/TS/lover/list"
-    fields = ["autor", "pais", "edad", "color_predominante"]
+    fields = ["autor", "pais", "edad", "color_predominante", "imagen"]
 
 class BorrarLover(LoginRequiredMixin, DeleteView):
 
@@ -194,13 +176,13 @@ class CrearFolklore(LoginRequiredMixin, CreateView):
 
     model = pulseraFolklore
     success_url = "/TS/folklore/list"
-    fields = ["autor", "pais", "edad", "color_predominante"]
+    fields = ["autor", "pais", "edad", "color_predominante", "imagen"]
 
 class ActualizarFolklore(LoginRequiredMixin, UpdateView):
 
     model = pulseraFolklore
     success_url = "/TS/folklore/list"
-    fields = ["autor", "pais", "edad", "color_predominante"]
+    fields = ["autor", "pais", "edad", "color_predominante", "imagen"]
 
 class BorrarFolklore(LoginRequiredMixin, DeleteView):
 
@@ -210,15 +192,22 @@ class BorrarFolklore(LoginRequiredMixin, DeleteView):
 
 @login_required
 def buscar_pulsera(request):
-    form = Buscar_Form()
-    return render(request, "BlogApp/busqueda.html", {"form": form})
+    return render(request, "BlogApp/Buscar.html")
 
 @login_required
-def resultados(request):
-    if request.method == 'GET':
-        term = request.GET.get('color_predeterminado', '')
-        peliculas_encontradas = pulsera1989.objects.filter(color_predeterminado__icontains=term)
+def resultado_busqueda(request):
+    colors = request.GET.getlist("color")
 
-        return render(request, 'BlogApp/resultado_busqueda.html', {"pulseras_encontradas": peliculas_encontradas})
-    
+    if colors:
+        # Search for the common field in all models
+        resultados1 = pulsera1989.objects.filter(color_predominante__in=colors)
+        resultados2 = pulseraFolklore.objects.filter(color_predominante__in=colors)
+        resultados3 = pulseraLover.objects.filter(color_predominante__in=colors)
+        resultados4 = pulseraReputation.objects.filter(color_predominante__in=colors)
 
+        # You can combine the results from different models
+        combined_results = list(resultados1) + list(resultados2) + list(resultados3)+ list(resultados4)
+
+        return render(request, "BlogApp/resultado_busqueda.html", {"valor": colors, "res": combined_results})
+    else:
+        return HttpResponse("No seleccionaste ningún color. Regresá e intentá de nuevo")

@@ -1,3 +1,4 @@
+
 {% extends "BlogApp/welcome.html" %}
 {% load static %}
 
@@ -7,26 +8,25 @@
 
 {% block FORM %}
 
-<p>Autor: {{pulserreputation.autor}}</p>
-<p>País: {{pulserreputation.pais}}</p>
-<p>Edad: {{pulserreputation.edad}}</p>
-<p>Color: {{pulserreputation.color_predominante}}</p>
+<div class="col-lg-6 order-lg-2">
+    <div class="p-5">
+        <img class="img-fluid rounded-circle" src="{{ pulserareputation.imagen.url }}" alt="..." />
+        </div>
+</div>
+
+
 
 <style>
-    .enlace_vistas{
-        text-decoration: none;
-        color: black;
-    }
-    
-    .enlace_vistas:hover{
+    .regresar_link{
         color: white;
+        text-decoration: none;
     }
-    </style>
+</style>
 
-<a class="enlace_vistas" href="{% url 'ver_reputation' %}"> <- Regresar</a>
+<br>
+<a class="regresar_link" href="{% url 'ver_reputation' %}"> <- Regresar</a>
 {% endblock %}
 
 {% block submit %}{% endblock %}
 {% block infoSection %}
 {% endblock %}
-

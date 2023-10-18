@@ -1,21 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultado búsqueda</title>
-</head>
-<body>
-    
-    <h1>Resultado de Búsqueda</h1>
-    <ul>
-        {% for Era in pulseras_encontradas %}
-        <li>
-            <img src="{{pulsera_1989.imagenPulsera }}" alt="Resultado de la búsqueda">
-        </li>
-        {% empty %}
-            <li style="list-style: none;">No se encontraron pulseras.</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends "BlogApp/welcome.html" %}
+{% load static %}
+
+{% block texto1 %}<h1 class="masthead-heading mb-0">Resultados de la búsqueda</h1>{% endblock %}
+{% block text02 %}{% endblock %}
+
+{% block FORM %}
+{% if res %}
+{% for pulsera in res %}
+<div class="col-lg-6 order-lg-2">
+    <div class="p-5">
+        <img class="img-fluid rounded-circle" src="{{ pulsera.imagen.url }}" alt="..." />
+        </div>
+</div>
+
+{% endfor %}
+{% else %}
+<p>No se encontraron resultados.</p>
+{% endif %}
+{% endblock %}
+
+{% block submit %}{% endblock %}
+{% block infoSection %}{% endblock %}

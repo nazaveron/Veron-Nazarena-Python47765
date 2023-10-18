@@ -8,10 +8,13 @@
 
 {% block FORM %}
 
-<p>Autor: {{pulseralover.autor}}</p>
-<p>País: {{pulseralover.pais}}</p>
-<p>Edad: {{pulseralover.edad}}</p>
-<p>Color: {{pulseralover.color_predominante}}</p>
+<div class="col-lg-6 order-lg-2">
+    <div class="p-5">
+        <img class="img-fluid rounded-circle" src="{{ pulseralover.imagen.url }}" alt="..." />
+        </div>
+</div>
+
+
 
 <style>
     .regresar_link{
@@ -20,11 +23,10 @@
     }
 </style>
 
-
+<br>
 <a class="regresar_link" href="{% url 'ver_lover' %}"> <- Regresar</a>
 {% endblock %}
 
 {% block submit %}{% endblock %}
 {% block infoSection %}
 {% endblock %}
-

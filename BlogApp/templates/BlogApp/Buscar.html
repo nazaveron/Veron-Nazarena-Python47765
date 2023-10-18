@@ -1,20 +1,35 @@
-{% extends "BlogApp/HOMEPAGE.html" %}
+{% extends "BlogApp/welcome.html" %}
 {% load static %}
 
-{% block texto1 %}<h1 class="masthead-heading mb-0">Búsqueda</h1>{% endblock%}
-{% block text02 %}{% endblock%}
-
+{% block texto1 %}<h1 class="masthead-heading mb-0">Búsqueda</h1>{% endblock %}
+{% block text02 %}{% endblock %}
 
 {% block FORM %}
-<h1>ingresa un color</h1>
-<form method="get" action="{% url 'resultados' %}">
+<h1>Filtrá por color</h1>
+<hr>
+<form method="get" action="{% url 'resultado_busqueda' %}">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Buscar</button>
+    <label for="white">Negro</label>
+    <input type="checkbox" name="color" value="negro" id="negro">
+    <hr>
+    <label for="white">Rosado</label>
+    <input type="checkbox" name="color" value="rosado" id="rosado">
+    <hr>
+    <label for="white">Celeste</label>
+    <input type="checkbox" name="color" value="celeste" id="celeste">
+    <hr>
+    <label for="pink">Rojo</label>
+    <input type="checkbox" name="color" value="rojo" id="rojo">
+    <hr>
+    <label for="violet">Violeta</label>
+    <input type="checkbox" name="color" value="violeta" id="violeta">
+    <hr>
+    <label for="yellow">Amarillo</label>
+    <input type="checkbox" name="color" value="amarillo" id="amarillo">
+    <hr>
+    <button type="submit" name="buscar">Buscar</button>
 </form>
 {% endblock %}
 
 {% block submit %}{% endblock %}
-{% block infoSection %}
-{% endblock %}
-
+{% block infoSection %}{% endblock %}

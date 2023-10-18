@@ -8,10 +8,12 @@
 
 {% block FORM %}
 
-<p>Autor: {{pulsera1989.autor}}</p>
-<p>País: {{pulsera1989.pais}}</p>
-<p>Edad: {{pulsera1989.edad}}</p>
-<p>Color: {{pulsera1989.color_predominante}}</p>
+<div class="col-lg-6 order-lg-2">
+    <div class="p-5">
+        <img class="img-fluid rounded-circle" src="{{ pulsera1989.imagen.url }}" alt="..." />
+        </div>
+</div>
+
 
 
 <style>
@@ -21,6 +23,7 @@
     }
 </style>
 
+<br>
 <a class="regresar_link" href="{% url 'ver_1989' %}"> <- Regresar</a>
 {% endblock %}
 

@@ -16,12 +16,17 @@
 {% block infoSection %}
 <br>
 <br>
+<br>
+<br>
+<br>
+
 <section>
+    <h1>Los datos que ingreses van a ser los nuevos</h1>
+    <hr>
     <div class="container px-5">
         <div class="row gx-5 align-items-center">
             <div class="col-lg-6 order-lg-2">
-                <div class="p-5"><img class="img-fluid rounded-circle"
-                        src="{% static 'BlogApp/assets/img/img (9).jpeg' %}" alt="..." /></div>
+                <div class="p-5"></div>
             </div>
             <div class="col-lg-6 order-lg-1">
                 <form action="" method="POST"> {% csrf_token %}
@@ -37,4 +42,8 @@
         </div>
     </div>
 </section>
+
+<br>
+<br>
+<br>
 {% endblock %}

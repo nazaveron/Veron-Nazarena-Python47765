@@ -4,9 +4,10 @@ from django.contrib.auth.views import LogoutView
 
 
 urlpatterns = [
-
     path('aboutme/', aboutme, name="about_me"),
     path('welcome/', welcome, name="welcome"),
+    path('buscar/', buscar_pulsera, name="buscar_pulsera"),
+    path('resultados/', resultado_busqueda, name="resultado_busqueda"),
 
     path('login/', iniciosesion, name="login"),
     path('registro/', registro, name="registro"),
@@ -21,6 +22,7 @@ urlpatterns = [
     path('1989/subir/', CrearPulsera1989.as_view(), name="crear_1989"),
     path('1989/actualizar/<int:pk>',ActualizarPulsera1989.as_view(), name="actualizar_1989"),
     path('1989/eliminar/<int:pk>', BorrarPulsera1989.as_view(), name="borrar_1989"),
+
     
 
     #CRUD Reputation
@@ -47,4 +49,5 @@ urlpatterns = [
     path('folklore/subir/', CrearFolklore.as_view(), name="crear_folklore"),
     path('folklore/actualizar/<int:pk>',ActualizarFolklore.as_view(), name="actualizar_folklore"),
     path('folklore/eliminar/<int:pk>', BorrarFolklore.as_view(), name="borrar_folklore"),
+
     ]
