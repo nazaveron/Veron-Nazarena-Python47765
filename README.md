@@ -8,6 +8,3 @@ Datos de la DB django:
 superuser: naza123
 password: pulseras12
 
-Carpeta drive que contiene excel y video
-https://drive.google.com/drive/folders/1sJKEg4ojNcp28CvdapfqqlZRgKXaPlVs?usp=sharing
-
